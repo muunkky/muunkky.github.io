@@ -1,12 +1,14 @@
 /* soft.css */
 :root {
-    --primary-bg: #e0e0e0;
-    --container-bg: #f5f5f5;
+    --primary-bg: #813636;
+    --container-bg: #813636;
     --shadow-light: #ffffff;
     --shadow-dark: #a3a3a3;
     --accent-color: #3fb;
     --text-color: #333;
     --border-radius: 12px;
+    box-shadow:  20px -20px 60px #6e2e2e,
+             -20px 20px 60px #943e3e;
 }
 
 body {
