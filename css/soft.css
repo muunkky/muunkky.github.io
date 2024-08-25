@@ -1,14 +1,12 @@
 /* soft.css */
 :root {
-    --primary-bg: #813636;
-    --container-bg: #813636;
-    --shadow-light: #ffffff;
-    --shadow-dark: #a3a3a3;
-    --accent-color: #3fb;
-    --text-color: #333;
-    --border-radius: 12px;
-    box-shadow:  20px -20px 60px #6e2e2e,
-             -20px 20px 60px #943e3e;
+    --primary-bg: #e0e0e0; /* Light gray background for the entire body */
+    --container-bg: #f0f0f0; /* Slightly lighter background for containers */
+    --shadow-light: #ffffff; /* Light shadow for Neumorphism effect */
+    --shadow-dark: #b3b3b3;  /* Dark shadow for Neumorphism effect */
+    --accent-color: #3fb; /* Accent color for interactive elements */
+    --text-color: #333; /* Main text color */
+    --border-radius: 12px; /* Border radius for rounded corners */
 }
 
 body {
@@ -26,7 +24,7 @@ body {
     background-color: var(--container-bg);
     padding: 20px;
     border-radius: var(--border-radius);
-    box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+    box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
 }
 
 .header {
