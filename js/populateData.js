@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM fully loaded and parsed.");
 
     // Fetch the JSON file
-    fetch('data/test.json?v=' + new Date().getTime())
+    fetch('data/test2.json?v=' + new Date().getTime())
         .then(response => {
             console.log("Fetch response status:", response.status);
             if (!response.ok) {
@@ -108,23 +108,4 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error('Error during fetch or processing:', error);
         });
-});
-
-// Temporary test outside of DOMContentLoaded to see if that affects behavior
-console.log("Running test fetch outside DOMContentLoaded");
-fetch('data/test.json?v=' + new Date().getTime())
-.then(response => {
-    console.log("Fetch response status:", response.status);
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.json();
-})
-.then(data => {
-    console.log("JSON data successfully fetched:", data);
-
-    // Your existing code to manipulate the DOM goes here...
-})
-.catch(error => {
-    console.error('Error during fetch or processing:', error);
 });
