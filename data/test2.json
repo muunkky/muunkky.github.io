@@ -1,0 +1,33 @@
+{
+    "Store_owner": "Juan Perez",
+    "Total_net_commission": "150.00",
+    "Total_referral_commission": "50.00",
+    "Commission_Notices": [
+        {
+            "order_created_at": "2024-08-24",
+            "variant_title": "Producto A",
+            "net_commission": "25.00",
+            "type": "Direct",
+            "customer_first_name": "Carlos",
+            "customer_last_name": "Martinez",
+            "customer_email": "carlos.martinez@example.com",
+            "shipping_province": "Mexico",
+            "shipping_city": "Ciudad de Mexico"
+        },
+        {
+            "order_created_at": "2024-08-22",
+            "variant_title": "Producto B",
+            "net_commission": "75.00",
+            "type": "Referral",
+            "customer_first_name": "Ana",
+            "customer_last_name": "Gomez",
+            "customer_email": "ana.gomez@example.com",
+            "shipping_province": "Nuevo Leon",
+            "shipping_city": "Monterrey"
+        }
+    ],
+    "Store_owner_email": "juan.perez@example.com",
+    "unsubscribe": "https://example.com/unsubscribe",
+    "unsubscribe_preferences": "https://example.com/unsubscribe-preferences",
+    "Sender_Name": "Boyu Wellness"
+}
