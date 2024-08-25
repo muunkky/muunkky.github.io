@@ -64,29 +64,22 @@
         <h3>Comisiones</h3>
         <div class="table-container">
             <table class="commission-table">
-                <tr>
-                    <th>Fecha</th>
-                    <th>Producto</th>
-                    <th>Monto</th>
-                    <th>Tipo</th>
-                    <th>Cliente</th>
-                    <th>Ubicación</th>
-                </tr>
-                <!-- Start of dynamic content for commission notices -->
-                {{#each Commission_Notices}}
-                <tr>
-                    <td>{{order_created_at}}</td>
-                    <td>{{variant_title}}</td>
-                    <td>${{net_commission}}</td>
-                    <td>{{type}}</td>
-                    <td>{{customer_first_name}} {{customer_last_name}} {{customer_email}}</td>
-                    <td>{{shipping_province}}, {{shipping_city}}</td>
-                </tr>
-                {{/each}}
-                <!-- End of dynamic content for commission notices -->
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Producto</th>
+                        <th>Monto</th>
+                        <th>Tipo</th>
+                        <th>Cliente</th>
+                        <th>Ubicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic content will be inserted here by JavaScript -->
+                </tbody>
             </table>
         </div>
-
+        
         <!-- Footer -->
         <div class="footer">
             <p>If you have any questions, feel free to contact us at <a href="mailto:{{Store_owner_email}}">{{Store_owner_email}}</a>.</p>
