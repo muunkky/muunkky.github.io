@@ -1,0 +1,174 @@
+/* css/flat.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.logo-image {
+    max-width: 200px;
+    height: auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+/* Table Containers */
+.table-container {
+    overflow-x: auto; /* Allows horizontal scrolling if the table exceeds container width */
+    
+}
+
+.table-container-desktop {
+    display: block; /* Ensure desktop table is always visible unless explicitly hidden by media queries */
+}
+
+.table-container-mobile {
+    display: none; /* Hide mobile table by default */
+}
+
+.commission-table-desktop th, .commission-table-desktop td {
+    height: 4.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* Desktop Table Styling */
+
+.commission-table-desktop {
+    width: auto;
+    min-width: 100%;
+    border-collapse: separate; /* Important for applying border spacing */
+    border-spacing: 0; /* Removes space between cells, if any */
+    table-layout: fixed;
+    border-top: 4px solid #28a745; /* Green top border as an accent */
+    border-radius: 8px; /* Apply rounding to the table corners */
+    overflow: hidden; /* Ensures the content does not spill outside the border */
+}
+
+
+/* Removing the bottom border for the last row to merge with the table's rounded corners */
+.commission-table-desktop tr:last-child th,
+.commission-table-desktop tr:last-child td {
+    border-bottom: none;
+}
+
+.commission-table-desktop th, .commission-table-desktop td {
+    padding: 10px;
+    text-align: left;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
+}
+
+/* Make sure to remove the right border on the last column */
+.commission-table-desktop th:last-child, .commission-table-desktop td:last-child {
+    border-right: none;
+}
+
+/* Setting specific widths for each column by targeting th and td elements based on their order */
+.commission-table-desktop th:nth-child(1), .commission-table-desktop td:nth-child(1) { 
+    width: 100px !important; /* Date */
+}
+.commission-table-desktop th:nth-child(2), .commission-table-desktop td:nth-child(2) { 
+    width: 100px !important; /* Product */
+}
+.commission-table-desktop th:nth-child(3), .commission-table-desktop td:nth-child(3) { 
+    width: 100px !important; /* Amount */
+}
+.commission-table-desktop th:nth-child(4), .commission-table-desktop td:nth-child(4) { 
+    width: 100px !important; /* Type */
+}
+.commission-table-desktop th:nth-child(5), .commission-table-desktop td:nth-child(5) { 
+    width: 100px !important; /* Client */
+}
+.commission-table-desktop th:nth-child(6), .commission-table-desktop td:nth-child(6) { 
+    width: 100px !important; /* Location */
+}
+
+
+.commission-table-desktop th {
+    background-color: #fff;
+    color: #28a745;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .table-container-desktop {
+        display: none; /* Hide desktop table */
+    }
+
+    .table-container-mobile {
+        display: block; /* Show mobile table */
+    }
+}
+
+
+/* Header styles */
+.header img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 30px;
+}
+
+/* Typography and links */
+h2, h3 {
+    color: #007BFF;
+    margin: 20px 0;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+p {
+    margin: 15px 0;
+    color: #555;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.greeting, .summary {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background: #ffffff;
+}
+
+.summary {
+    border-left: 4px solid #007BFF;
+}
+
+.summary-item {
+    margin-bottom: 20px;
+}
+
+.summary-value {
+    color: #28a745 !important;
+    font-size: 1.5em;
+    font-weight: bold;
+}
