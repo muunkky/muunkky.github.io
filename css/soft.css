@@ -1,21 +1,32 @@
-/* soft.css */
+/* css/soft.css */
 :root {
-    --primary-bg: #e0e0e0; /* Light gray background for the entire body */
-    --container-bg: #f0f0f0; /* Slightly lighter background for containers */
-    --shadow-light: #ffffff; /* Light shadow for Neumorphism effect */
-    --shadow-dark: #b3b3b3;  /* Dark shadow for Neumorphism effect */
-    --accent-color: #3fb; /* Accent color for interactive elements */
-    --text-color: #333; /* Main text color */
-    --border-radius: 12px; /* Border radius for rounded corners */
+    --primary-bg: #CDB4DB; /* Light lavender for the entire body */
+    --container-bg: #FFC8DD; /* Soft pink for containers */
+    --shadow-light: #FFAFCC; /* Light pink for Neumorphism effect */
+    --shadow-dark: #BDE0FE;  /* Soft blue for Neumorphism effect */
+    --accent-color: #A2D2FF; /* Soft blue accent color */
+    --text-color: #6D6875; /* Desaturated purple for main text color */
+    --header-text-color: #2C2F33; /* Dark gray for headers */
+    --header-text-color-light: #CDB4DB; /* Light blue for header text */
+    --white: #ffffff; /* Pure white for values */
+    
+    /* Specific Glow Colors */
+    --glow-blue: #A2D2FF; /* Soft blue glow */
+    --glow-pink-light: #FFAFCC; /* Light pink glow */
+    --glow-pink: #FFC8DD; /* Soft pink glow */
+    --glow-blue-soft: #BDE0FE; /* Soft blue glow */
+    
+    --border-radius-large: 50px; /* Large border radius for soft edges */
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--primary-bg);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
 .container {
@@ -23,14 +34,15 @@ body {
     margin: 20px auto;
     background-color: var(--container-bg);
     padding: 20px;
-    border-radius: var(--border-radius);
-    box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+    border-radius: var(--border-radius-large);
+    box-shadow: 20px -20px 60px var(--shadow-light), -20px 20px 60px var(--shadow-dark);
+    box-sizing: border-box; /* Ensures padding doesn't add to width */
 }
 
 .header {
     text-align: center;
     padding-bottom: 20px;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid var(--shadow-dark);
 }
 
 .header h1 {
@@ -38,64 +50,71 @@ body {
     color: var(--accent-color);
 }
 
-.greeting {
-    margin: 20px 0;
-}
-
+/* General styling for the summary section */
 .summary {
-    margin: 20px 0;
-    padding: 20px;
-    background-color: var(--container-bg);
-    border-radius: var(--border-radius);
-    box-shadow: inset 8px 8px 16px var(--shadow-dark), inset -8px -8px 16px var(--shadow-light);
+    background: var(--container-bg);
+    border-radius: var(--border-radius-large);
+    padding: 30px;
+    max-width: 450px;
+    margin: 20px auto;
+    box-shadow: 20px -20px 60px var(--shadow-light), -20px 20px 60px var(--shadow-dark);
 }
 
+/* Title styling */
 .summary h2 {
-    margin-bottom: 15px;
-    font-size: 1.5em;
-    color: #27346A;
+    font-size: 2rem;
+    color: var(--header-text-color-light);
     text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
 }
 
+/* Styling for each summary item */
 .summary-item {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: var(--border-radius);
-    background-color: var(--container-bg);
-    box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
-}
-
-.summary-icon {
-    font-size: 1.5em;
-    margin-right: 15px;
-    color: var(--accent-color);
-}
-
-.summary-content {
-    flex-grow: 1;
+    padding: 20px;
+    background: var(--container-bg);
+    border-radius: var(--border-radius-large);
+    box-shadow: inset 10px -10px 30px var(--shadow-light), inset -10px 10px 30px var(--shadow-dark);
+    margin-bottom: 20px;
 }
 
 .summary-title {
-    margin: 0;
-    font-size: 1.1em;
-    color: #666666;
+    font-size: 1.2rem;
+    color: var(--header-text-color-light);
+    font-weight: 700; 
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 
+        0 0 8px var(--glow-blue), /* Soft blue glow */
+        0 0 32px var(--glow-pink-light), /* Pink glow */
+        0 0 52px var(--glow-pink), /* Soft pink glow */
+        0 0 16px var(--glow-blue-soft); /* Soft blue glow */;
 }
 
 .summary-value {
-    margin: 5px 0 0 0;
-    font-size: 1.4em;
+    font-size: 1.5rem;
+    color: var(--white); /* Pure white for the values */
     font-weight: bold;
-    color: var(--text-color);
 }
 
+/* Hover effect on summary items */
+.summary-item:hover {
+    box-shadow: inset 12px -12px 36px var(--shadow-light), inset -12px 12px 36px var(--shadow-dark);
+}
+
+/* Table Styling */
 .table-container {
-    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     margin-top: 20px;
-    border-radius: var(--border-radius);
-    box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+    border-radius: var(--border-radius-large);
+    box-shadow: 20px -20px 60px var(--shadow-light), -20px 20px 60px var(--shadow-dark);
+    background-color: var(--container-bg);
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding/margin doesn't exceed container width */
 }
 
 .commission-table {
@@ -104,94 +123,44 @@ body {
     border-collapse: separate;
     border-spacing: 0;
     margin: 0;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-large);
     overflow: hidden;
-    box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+    box-sizing: border-box; /* Ensure table width stays within container */
+    background-color: var(--container-bg);
+    box-shadow: 10px -10px 30px var(--shadow-light), -10px 10px 30px var(--shadow-dark);
 }
 
 .commission-table th, .commission-table td {
-    padding: 10px;
+    padding: 10px 15px;
     text-align: left;
     box-sizing: border-box;
     border: none;
+    background: var(--container-bg);
+    box-shadow: inset 5px -5px 15px var(--shadow-light), inset -5px 5px 15px var(--shadow-dark);
+    box-sizing: border-box; /* Ensure padding doesn't exceed cell width */
 }
 
+/* Header text */
 .commission-table th {
-    background-color: #333;
-    color: #ffffff;
+    background-color: var(--accent-color);
+    color: var(--header-text-color); /* Dark gray for readability */
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
+/* Body text */
 .commission-table td {
     background-color: var(--container-bg);
-    color: var(--text-color);
-    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+    color: var(--text-color); /* Desaturated purple for contrast */
 }
 
-.footer {
-    margin: 20px 0;
-    text-align: center;
-    font-size: 12px;
-    color: #999999;
-}
-
-.footer a {
-    color: #999999;
-    text-decoration: none;
-}
-
-/* Mobile Responsiveness */
 @media (max-width: 600px) {
-    .container {
+    .table-container {
         padding: 15px;
     }
 
-    .header img {
-        max-width: 150px;
-    }
-
     .commission-table th, .commission-table td {
-        padding: 8px;
-        font-size: 12px;
-    }
-
-    .summary h2 {
-        font-size: 1.2em;
-    }
-}
-
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primary-bg: #121212;
-        --container-bg: #1e1e1e;
-        --shadow-light: rgba(255, 255, 255, 0.1);
-        --shadow-dark: rgba(0, 0, 0, 0.5);
-        --text-color: #e0e0e0;
-    }
-
-    body {
-        background-color: var(--primary-bg);
-        color: var(--text-color);
-    }
-
-    .summary {
-        background-color: var(--container-bg);
-        border-color: #444;
-    }
-
-    .commission-table th {
-        background-color: #333;
-        color: #f5f5f5;
-    }
-
-    .commission-table td {
-        background-color: var(--container-bg);
-        border-color: #444;
-    }
-
-    .footer a {
-        color: #888;
+        padding: 10px;
+        font-size: 0.9rem;
     }
 }
