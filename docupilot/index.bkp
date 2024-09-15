@@ -1,0 +1,103 @@
+<link href="https://muunkky.github.io/font/DIN%20Next%20LT%20Pro/font-family.css" rel="stylesheet" />
+<link href="https://muunkky.github.io/docupilot/css/colors.css" rel="stylesheet" />
+<link href="https://muunkky.github.io/docupilot/css/main-styles.css" rel="stylesheet" />
+
+<style>
+  body {
+    font-family: 'din_next_lt_pro', Arial, sans-serif;
+    background-color: #f0f0f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  p {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  th, td {
+    padding: 12px 15px;
+    border: 1px solid var(--table-border-color);
+    text-align: left;
+    font-size: 14px;
+  }
+
+  th {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  tr:nth-child(even) {
+    background-color: var(--row-even-color);
+  }
+
+  tr:nth-child(odd) {
+    background-color: var(--row-odd-color);
+  }
+
+  tr:hover {
+    background-color: var(--hover-color);
+    color: var(--background-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+</style>
+
+
+<h1>Event Signup Sheet</h1>
+
+<p>Join us for an exciting event! Please sign up below with your details.</p>
+
+<table>
+	<tbody>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone Number</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>________________________</td>
+			<td>________________________</td>
+			<td>________________________</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>________________________</td>
+			<td>________________________</td>
+			<td>________________________</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>________________________</td>
+			<td>________________________</td>
+			<td>________________________</td>
+		</tr>
+	</tbody>
+</table>
