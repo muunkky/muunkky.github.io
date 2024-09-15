@@ -1,10 +1,13 @@
 /* colors.css */
 :root {
-    --primary-color: #da291c;
-    --secondary-color: #ba0020;
-    --accent-color: #000000;
-    --background-color: #ffffff;
-    --hover-color: #da291c;
-    --text-color: #000000;
+  --primary-color: #da291c;
+  --secondary-color: #ba0020;
+  --accent-color: #000000;
+  --background-color: #ffffff;
+  --hover-color: #da291c;
+  --text-color: #000000;
+  --table-border-color: #ddd;
+  --row-odd-color: #ffffff;
+  --row-even-color: #f9f9f9;
   }
   
