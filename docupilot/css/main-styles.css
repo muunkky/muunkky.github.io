@@ -1,0 +1,23 @@
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  h1 {
+    color: var(--primary-color);
+  }
+  
+  p {
+    color: var(--secondary-color);
+  }
+  
+  th {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+  }
+  
+  tr:hover {
+    background-color: var(--hover-color);
+    color: var(--background-color);
+  }
+  
