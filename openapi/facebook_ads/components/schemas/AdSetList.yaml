@@ -1,0 +1,29 @@
+# /facebook_ads/components/schemas/AdSetList.yaml
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: './AdSet.yaml'
+  paging:
+    type: object
+    properties:
+      cursors:
+        type: object
+        properties:
+          before:
+            type: string
+            description: Cursor for the previous page
+          after:
+            type: string
+            description: Cursor for the next page
+      next:
+        type: string
+        format: uri
+        description: URL to the next page of results
+      previous:
+        type: string
+        format: uri
+        description: URL to the previous page of results
+required:
+  - data

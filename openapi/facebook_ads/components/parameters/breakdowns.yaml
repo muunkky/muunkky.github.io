@@ -1,0 +1,60 @@
+# /facebook_ads/components/parameters/breakdowns.yaml
+name: breakdowns
+in: query
+description: How to break down the result
+required: false
+schema:
+  type: array
+  items:
+    type: string
+    enum:
+      - ad_format_asset
+      - age
+      - app_id
+      - body_asset
+      - breakdown_reporting_ad_id
+      - call_to_action_asset
+      - coarse_conversion_value
+      - country
+      - description_asset
+      - fidelity_type
+      - gender
+      - hsid
+      - image_asset
+      - impression_device
+      - is_conversion_id_modeled
+      - is_rendered_as_delayed_skip_ad
+      - landing_destination
+      - link_url_asset
+      - mdsa_landing_destination
+      - media_asset_url
+      - media_creator
+      - media_destination_url
+      - media_format
+      - media_origin_url
+      - media_text_content
+      - media_type
+      - postback_sequence_index
+      - product_id
+      - redownload
+      - region
+      - skan_campaign_id
+      - skan_conversion_id
+      - skan_version
+      - title_asset
+      - user_persona_id
+      - user_persona_name
+      - video_asset
+      - dma
+      - frequency_value
+      - hourly_stats_aggregated_by_advertiser_time_zone
+      - hourly_stats_aggregated_by_audience_time_zone
+      - mmm
+      - place_page_id
+      - publisher_platform
+      - platform_position
+      - device_platform
+      - standard_event_content_type
+      - conversion_destination
+      - signal_source_bucket
+      - marketing_messages_btn_name

@@ -1,0 +1,19 @@
+# /facebook_ads/components/parameters/time_range.yaml
+name: time_range
+in: query
+description: Time range for filtering campaign data
+required: false
+schema:
+  type: object
+  properties:
+    since:
+      type: string
+      format: date
+      description: Start date in YYYY-MM-DD format
+    until:
+      type: string
+      format: date
+      description: End date in YYYY-MM-DD format
+  required:
+    - since
+    - until

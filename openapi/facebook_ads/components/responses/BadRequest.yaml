@@ -1,0 +1,6 @@
+# /facebook_ads/components/responses/BadRequest.yaml
+description: Invalid request parameters
+content:
+  application/json:
+    schema:
+      $ref: '../../shared/components/schemas/Error.yaml'

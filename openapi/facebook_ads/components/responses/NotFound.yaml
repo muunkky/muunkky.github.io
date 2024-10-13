@@ -1,0 +1,6 @@
+# /facebook_ads/components/responses/NotFound.yaml
+description: Resource not found
+content:
+  application/json:
+    schema:
+      $ref: '../../shared/components/schemas/Error.yaml'

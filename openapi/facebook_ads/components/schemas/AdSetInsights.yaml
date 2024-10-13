@@ -1,0 +1,62 @@
+# /facebook_ads/components/schemas/AdSetInsights.yaml
+type: object
+properties:
+  adset_id:
+    type: string
+    description: Unique ID of the Ad Set in reporting
+  adset_name:
+    type: string
+    description: Name of the Ad Set in reporting
+  campaign_id:
+    type: string
+    description: ID of the campaign this Ad Set belongs to
+  campaign_name:
+    type: string
+    description: Name of the campaign this Ad Set belongs to
+  account_id:
+    type: string
+    description: ID of the ad account
+  account_name:
+    type: string
+    description: Name of the ad account
+  impressions:
+    type: string
+    description: Number of times your ads were on screen
+  spend:
+    type: string
+    description: Total amount spent on the Ad Set
+  clicks:
+    type: string
+    description: Number of clicks on your ads
+  reach:
+    type: string
+    description: Number of people who saw your ads at least once
+  actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Actions attributed to the Ad Set
+  cost_per_action_type:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Cost per action type
+  date_start:
+    type: string
+    format: date
+    description: Start date for the data
+  date_stop:
+    type: string
+    format: date
+    description: End date for the data
+required:
+  - adset_id
+  - adset_name
+  - campaign_id
+  - campaign_name
+  - account_id
+  - account_name
+  - impressions
+  - spend
+  - date_start
+  - date_stop

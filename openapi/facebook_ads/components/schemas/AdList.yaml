@@ -1,0 +1,87 @@
+# /facebook_ads/components/schemas/AdSet.yaml
+type: object
+properties:
+  id:
+    type: string
+    description: Unique identifier for the Ad Set
+  account_id:
+    type: string
+    description: ID of the ad account that owns this Ad Set
+  campaign_id:
+    type: string
+    description: ID of the campaign this Ad Set belongs to
+  name:
+    type: string
+    description: Name of the Ad Set
+  status:
+    type: string
+    enum: [ACTIVE, PAUSED, DELETED, ARCHIVED]
+    description: Current status of the Ad Set
+  configured_status:
+    type: string
+    enum: [ACTIVE, PAUSED, DELETED, ARCHIVED]
+    description: Configured status of the Ad Set
+  effective_status:
+    type: string
+    enum: [ACTIVE, PAUSED, DELETED, ARCHIVED, CAMPAIGN_PAUSED, WITH_ISSUES]
+    description: The effective status of the Ad Set
+  created_time:
+    type: string
+    format: date-time
+    description: Time when the Ad Set was created
+  updated_time:
+    type: string
+    format: date-time
+    description: Time when the Ad Set was last updated
+  daily_budget:
+    type: string
+    description: The daily budget of the Ad Set in your account currency
+  lifetime_budget:
+    type: string
+    description: The lifetime budget of the Ad Set in your account currency
+  bid_amount:
+    type: integer
+    description: Bid cap or target cost for this Ad Set
+  bid_strategy:
+    type: string
+    enum: [LOWEST_COST_WITHOUT_CAP, LOWEST_COST_WITH_BID_CAP, COST_CAP, MINIMUM_ROAS]
+    description: Bid strategy for this Ad Set
+  billing_event:
+    type: string
+    enum: [APP_INSTALLS, CLICKS, IMPRESSIONS, LINK_CLICKS, OFFER_CLAIMS, PAGE_LIKES, POST_ENGAGEMENT, THRUPLAY, PURCHASE, LISTING_INTERACTION]
+    description: The billing event for this Ad Set
+  optimization_goal:
+    type: string
+    description: Optimization goal for ad delivery
+  targeting:
+    $ref: './Targeting.yaml'
+    description: Targeting criteria for the Ad Set
+  start_time:
+    type: string
+    format: date-time
+    description: Start time of the Ad Set
+  end_time:
+    type: string
+    format: date-time
+    description: End time of the Ad Set
+  is_skadnetwork_attribution:
+    type: boolean
+    description: Indicates if the Ad Set includes SKAdNetwork, iOS 14+
+  special_ad_categories:
+    type: array
+    items:
+      type: string
+      enum: [HOUSING, EMPLOYMENT, CREDIT, ISSUES_ELECTIONS_POLITICS, NONE]
+    description: Special ad categories applicable to the Ad Set
+required:
+  - id
+  - account_id
+  - name
+  - status
+  - configured_status
+  - created_time
+  - daily_budget
+  - bid_amount
+  - bid_strategy
+  - billing_event
+  - targeting

@@ -1,0 +1,6 @@
+# /facebook_ads/components/responses/200.yaml
+description: Successful retrieval of data
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/CampaignList.yaml'

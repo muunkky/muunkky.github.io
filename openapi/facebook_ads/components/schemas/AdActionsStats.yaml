@@ -1,0 +1,18 @@
+# /facebook_ads/components/schemas/AdsActionStats.yaml
+type: object
+properties:
+  action_type:
+    type: string
+    description: Type of action (e.g., link_click, purchase)
+  value:
+    type: string
+    description: Number of actions or value associated with the action
+  action_target_id:
+    type: string
+    description: The ID of the action target (e.g., a Page ID)
+  action_destination:
+    type: string
+    description: Destination of the action (e.g., website, app)
+required:
+  - action_type
+  - value

@@ -1,0 +1,45 @@
+# /facebook_ads/components/schemas/AdInsightsList.yaml
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: './AdInsights.yaml'
+  paging:
+    type: object
+    properties:
+      cursors:
+        type: object
+        properties:
+          before:
+            type: string
+            description: Cursor for the previous page
+          after:
+            type: string
+            description: Cursor for the next page
+  summary:
+    type: object
+    properties:
+      account_currency:
+        type: string
+        description: Currency used by the ad account.
+      account_id:
+        type: string
+        description: ID of the ad account.
+      account_name:
+        type: string
+        description: Name of the ad account.
+      total_actions:
+        type: string
+        description: Total number of actions attributed to your ads.
+      total_spend:
+        type: string
+        description: Total spend across all ads.
+      total_impressions:
+        type: string
+        description: Total impressions across all ads.
+      total_clicks:
+        type: string
+        description: Total clicks across all ads.
+required:
+  - data

@@ -1,0 +1,29 @@
+# /facebook_ads/components/parameters/filtering.yaml
+name: filtering
+in: query
+description: Filters on the report data
+required: false
+schema:
+  type: array
+  items:
+    type: object
+    properties:
+      field:
+        type: string
+        description: Field to filter on
+      operator:
+        type: string
+        description: Operator for the filter
+      value:
+        oneOf:
+          - type: string
+          - type: number
+          - type: boolean
+          - type: array
+            items:
+              type: string
+        description: Value to filter by
+    required:
+      - field
+      - operator
+      - value

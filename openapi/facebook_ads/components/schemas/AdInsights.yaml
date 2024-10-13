@@ -1,0 +1,514 @@
+# /facebook_ads/components/schemas/AdInsights.yaml
+type: object
+properties:
+  account_currency:
+    type: string
+    description: Currency that is used by your ad account.
+  account_id:
+    type: string
+    description: The ID number of your ad account, which groups your advertising activity. Your ad account includes your campaigns, ads, and billing.
+  account_name:
+    type: string
+    description: The name of your ad account, which groups your advertising activity. Your ad account includes your campaigns, ads, and billing.
+  action_values:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The total value of all conversions attributed to your ads.
+  actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The total number of actions people took that are attributed to your ads. Actions may include engagement, clicks, or conversions.
+  activity_recency:
+    type: string
+    description: Activity recency information.
+  ad_click_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Actions resulting from ad clicks.
+  ad_format_asset:
+    type: string
+    description: Ad format asset details.
+  ad_id:
+    type: string
+    description: The unique ID of the ad you're viewing in reporting.
+  ad_impression_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Actions resulting from ad impressions.
+  ad_name:
+    type: string
+    description: The name of the ad you're viewing in reporting.
+  adset_id:
+    type: string
+    description: The unique ID of the ad set you're viewing in reporting. An ad set is a group of ads that share the same budget, schedule, delivery optimization, and targeting.
+  adset_name:
+    type: string
+    description: The name of the ad set you're viewing in reporting. An ad set is a group of ads that share the same budget, schedule, delivery optimization, and targeting.
+  age_targeting:
+    type: string
+    description: Age targeting details.
+  attribution_setting:
+    type: string
+    description: The default attribution window to be used when attribution results are calculated. Each ad set has its own attribution setting value. The attribution setting for the campaign or account is calculated based on existing ad sets.
+  auction_bid:
+    type: string
+    description: Auction bid details.
+  auction_competitiveness:
+    type: string
+    description: Auction competitiveness details.
+  auction_max_competitor_bid:
+    type: string
+    description: The maximum competitor bid in the auction.
+  body_asset:
+    type: string
+    description: Ad body asset details.
+  buying_type:
+    type: string
+    description: The method by which you pay for and target ads in your campaigns: through dynamic auction bidding, fixed-price bidding, or reach and frequency buying. This field is currently only visible at the campaign level.
+  campaign_id:
+    type: string
+    description: The unique ID number of the ad campaign you're viewing in reporting. Your campaign contains ad sets and ads.
+  campaign_name:
+    type: string
+    description: The name of the ad campaign you're viewing in reporting. Your campaign contains ad sets and ads.
+  canvas_avg_view_percent:
+    type: string
+    description: The average percentage of the Instant Experience that people saw. An Instant Experience is a screen that opens after someone interacts with your ad on a mobile device. It may include a series of interactive or multimedia components, including video, images, product catalog, and more.
+  canvas_avg_view_time:
+    type: string
+    description: The average total time, in seconds, that people spent viewing an Instant Experience.
+  catalog_segment_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of actions performed attributed to your ads promoting your catalog segment, broken down by action type.
+  catalog_segment_value:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The total value of all conversions from your catalog segment attributed to your ads.
+  catalog_segment_value_mobile_purchase_roas:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The total return on ad spend (ROAS) from mobile app purchases for your catalog segment.
+  catalog_segment_value_omni_purchase_roas:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The total return on ad spend (ROAS) from all purchases for your catalog segment.
+  catalog_segment_value_website_purchase_roas:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The total return on ad spend (ROAS) from website purchases for your catalog segment.
+  clicks:
+    type: string
+    description: The number of clicks on your ads.
+  coarse_conversion_value:
+    type: string
+    description: Directional post-install quality insights with possible values: low, medium, high. Only supported by the `total_postbacks_detailed_v4` field.
+  comparison_node:
+    $ref: './AdsInsightsComparison.yaml'
+    description: Parent node that encapsulates fields to be compared (current time range vs. comparison time range).
+  conversion_values:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Conversion values.
+  conversions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Conversions.
+  converted_product_quantity:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of products purchased recorded by your merchant partner's pixel or app SDK for a given product ID and driven by your ads.
+  converted_product_value:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The value of purchases recorded by your merchant partner's pixel or app SDK for a given product ID and driven by your ads.
+  cost_per_15_sec_video_view:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Cost per 15-second video view.
+  cost_per_2_sec_continuous_video_view:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Cost per 2-second continuous video view.
+  cost_per_action_type:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The average cost of a relevant action.
+  cost_per_ad_click:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Cost per ad click.
+  cost_per_conversion:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Cost per conversion.
+  cost_per_dda_countby_convs:
+    type: string
+    description: Cost per DDA count by conversions.
+  cost_per_inline_link_click:
+    type: string
+    description: The average cost of each inline link click.
+  cost_per_inline_post_engagement:
+    type: string
+    description: The average cost of each inline post engagement.
+  cost_per_one_thousand_ad_impression:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Cost per one thousand ad impressions.
+  cost_per_outbound_click:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The average cost for each outbound click.
+  cost_per_thruplay:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The average cost for each ThruPlay. This metric is in development.
+  cost_per_unique_action_type:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The average cost of each unique action. This metric is estimated.
+  cost_per_unique_click:
+    type: string
+    description: The average cost for each unique click (all). This metric is estimated.
+  cost_per_unique_conversion:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Cost per unique conversion.
+  cost_per_unique_inline_link_click:
+    type: string
+    description: The average cost of each unique inline link click. This metric is estimated.
+  cost_per_unique_outbound_click:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The average cost for each unique outbound click. This metric is estimated.
+  country:
+    type: string
+    description: Country information.
+  cpc:
+    type: string
+    description: The average cost for each click (all).
+  cpm:
+    type: string
+    description: The average cost for 1,000 impressions.
+  cpp:
+    type: string
+    description: The average cost to reach 1,000 people. This metric is estimated.
+  created_time:
+    type: string
+    format: date-time
+    description: The time when the Ad was created.
+  ctr:
+    type: string
+    description: The percentage of times people saw your ad and performed a click (all).
+  date_start:
+    type: string
+    format: date
+    description: The start date for your data.
+  date_stop:
+    type: string
+    format: date
+    description: The end date for your data.
+  dda_countby_convs:
+    type: string
+    description: DDA count by conversions.
+  dda_results:
+    type: array
+    items:
+      $ref: './AdsInsightsDdaResult.yaml'
+    description: DDA results.
+  description_asset:
+    type: string
+    description: Ad description asset details.
+  device_platform:
+    type: string
+    description: Device platform information.
+  dma:
+    type: string
+    description: DMA (Designated Market Area) information.
+  estimated_ad_recall_rate_lower_bound:
+    type: string
+    description: Estimated ad recall rate lower bound.
+  estimated_ad_recall_rate_upper_bound:
+    type: string
+    description: Estimated ad recall rate upper bound.
+  estimated_ad_recallers_lower_bound:
+    type: string
+    description: Estimated ad recallers lower bound.
+  estimated_ad_recallers_upper_bound:
+    type: string
+    description: Estimated ad recallers upper bound.
+  fidelity_type:
+    type: string
+    description: Differentiates StoreKit-rendered ads from view-through ads. Supported by the `total_postbacks_detailed_v4` field.
+  frequency:
+    type: string
+    description: The average number of times each person saw your ad. This metric is estimated.
+  frequency_value:
+    type: string
+    description: Frequency value.
+  full_view_impressions:
+    type: string
+    description: The number of Full Views on your Page's posts as a result of your ad.
+  full_view_reach:
+    type: string
+    description: The number of people who performed a Full View on your Page's post as a result of your ad.
+  gender_targeting:
+    type: string
+    description: Gender targeting details.
+  hourly_stats_aggregated_by_advertiser_time_zone:
+    type: string
+    description: Hourly stats aggregated by advertiser time zone.
+  hourly_stats_aggregated_by_audience_time_zone:
+    type: string
+    description: Hourly stats aggregated by audience time zone.
+  hsid:
+    type: string
+    description: The HSID key available for ad impressions using SKAdNetwork 4 and later. Supported by the `total_postbacks_detailed_v4` field.
+  image_asset:
+    type: string
+    description: Ad image asset details.
+  impression_device:
+    type: string
+    description: The device where the ad was impressed.
+  impressions:
+    type: string
+    description: The number of times your ads were on screen.
+  inline_link_click_ctr:
+    type: string
+    description: The percentage of time people saw your ads and performed an inline link click.
+  inline_link_clicks:
+    type: string
+    description: The number of clicks on links to select destinations or experiences, on or off Facebook-owned properties. Uses a fixed 1-day-click attribution window.
+  inline_post_engagement:
+    type: string
+    description: The total number of actions that people take involving your ads. Uses a fixed 1-day-click attribution window.
+  instagram_upcoming_event_reminders_set:
+    type: string
+    description: Instagram upcoming event reminders set.
+  instant_experience_clicks_to_open:
+    type: string
+    description: Instant Experience clicks to open.
+  instant_experience_clicks_to_start:
+    type: string
+    description: Instant Experience clicks to start.
+  instant_experience_outbound_clicks:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Instant Experience outbound clicks.
+  interactive_component_tap:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Interactive component taps.
+  labels:
+    type: string
+    description: Labels associated with the ad.
+  landing_destination:
+    type: string
+    description: Landing destination details.
+  location:
+    type: string
+    description: Location information.
+  media_asset:
+    type: string
+    description: Media asset details.
+  mobile_app_purchase_roas:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The total return on ad spend (ROAS) from mobile app purchases.
+  objective:
+    type: string
+    description: The objective reflecting the goal you want to achieve with your advertising.
+  optimization_goal:
+    type: string
+    description: The optimization goal you selected for your ad or ad set.
+  outbound_clicks:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of clicks on links that take people off Facebook-owned properties.
+  outbound_clicks_ctr:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The percentage of times people saw your ad and performed an outbound click.
+  place_page_id:
+    type: string
+    description: Place page ID.
+  place_page_name:
+    type: string
+    description: The name of the place page involved in impression or click. Must be used with the Business Locations breakdown.
+  platform_position:
+    type: string
+    description: Platform position details.
+  postback_sequence_index:
+    type: string
+    description: Sequence of postbacks received from SkAdNetwork API version 4.0. Supported by the `total_postbacks_detailed_v4` field.
+  product_id:
+    type: string
+    description: Product ID.
+  publisher_platform:
+    type: string
+    description: Publisher platform details.
+  purchase_roas:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The total return on ad spend (ROAS) from purchases.
+  qualifying_question_qualify_answer_rate:
+    type: string
+    description: Qualifying question qualify answer rate.
+  reach:
+    type: string
+    description: The number of people who saw your ads at least once. Estimated metric.
+  redownload:
+    type: string
+    description: Boolean flag indicating if the customer redownloaded and reinstalled the app.
+  rule_asset:
+    type: string
+    description: Rule asset details.
+  shops_assisted_purchases:
+    type: string
+    description: Shops assisted purchases.
+  social_spend:
+    type: string
+    description: The total amount spent so far for your ads showing with social information (e.g., Jane Doe likes this).
+  spend:
+    type: string
+    description: The estimated total amount of money spent on your campaign, ad set, or ad during its schedule.
+  title_asset:
+    type: string
+    description: Ad title asset details.
+  updated_time:
+    type: string
+    format: date-time
+    description: Time when the Ad was last updated.
+  user_segment_key:
+    type: string
+    description: User segment key.
+  video_30_sec_watched_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of times your video was watched for at least 30 seconds.
+  video_asset:
+    type: string
+    description: Video asset details.
+  video_avg_time_watched_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The average time a video was played.
+  video_continuous_2_sec_watched_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Continuous 2-second video watched actions.
+  video_p100_watched_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of times your video was played to 100% of its length.
+  video_p25_watched_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of times your video was played to 25% of its length.
+  video_p50_watched_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of times your video was played to 50% of its length.
+  video_p75_watched_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of times your video was played to 75% of its length.
+  video_p95_watched_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of times your video was played to 95% of its length.
+  video_play_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The number of times your video starts to play. This metric is in development.
+  video_play_curve_actions:
+    type: array
+    items:
+      $ref: './AdsHistogramStats.yaml'
+    description: A video-play based curve graph illustrating the percentage of video plays that reached a given second.
+  video_play_retention_0_to_15s_actions:
+    type: array
+    items:
+      $ref: './AdsHistogramStats.yaml'
+    description: Video play retention actions from 0 to 15 seconds.
+  video_play_retention_20_to_60s_actions:
+    type: array
+    items:
+      $ref: './AdsHistogramStats.yaml'
+    description: Video play retention actions from 20 to 60 seconds.
+  video_play_retention_graph_actions:
+    type: array
+    items:
+      $ref: './AdsHistogramStats.yaml'
+    description: Video play retention graph actions.
+  video_time_watched_actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Video time watched actions.
+  website_ctr:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The percentage of times people saw your ad and performed a link click.
+  website_purchase_roas:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: The total return on ad spend (ROAS) from website purchases.
+  wish_bid:
+    type: string
+    description: Wish bid details.
+required:
+  - account_currency
+  - account_id
+  - account_name
+  - action_values
+  - actions
+  - ad_id
+  - ad_name
+  - adset_id
+  - adset_name
+  - impressions
+  - spend
+  - date_start
+  - date_stop

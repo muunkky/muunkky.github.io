@@ -1,0 +1,8 @@
+# /facebook_ads/components/parameters/level.yaml
+name: level
+in: query
+description: Level of the result
+required: false
+schema:
+  type: string
+  enum: [ad, adset, campaign, account]

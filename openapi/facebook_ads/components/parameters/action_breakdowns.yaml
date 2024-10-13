@@ -1,0 +1,25 @@
+# /facebook_ads/components/parameters/action_breakdowns.yaml
+name: action_breakdowns
+in: query
+description: How to break down action results
+required: false
+schema:
+  type: array
+  items:
+    type: string
+    enum:
+      - action_device
+      - conversion_destination
+      - matched_persona_id
+      - matched_persona_name
+      - signal_source_bucket
+      - standard_event_content_type
+      - action_canvas_component_name
+      - action_carousel_card_id
+      - action_carousel_card_name
+      - action_destination
+      - action_reaction
+      - action_target_id
+      - action_type
+      - action_video_sound
+      - action_video_type

@@ -1,0 +1,7 @@
+# /facebook_ads/components/parameters/adSetId.yaml
+name: adSetId
+in: path
+description: Unique identifier for the Ad Set
+required: true
+schema:
+  type: string

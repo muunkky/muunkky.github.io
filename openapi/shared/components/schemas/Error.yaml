@@ -1,0 +1,19 @@
+# /shared/components/schemas/Error.yaml
+type: object
+properties:
+  code:
+    type: integer
+    description: Error code
+  message:
+    type: string
+    description: Error message
+  type:
+    type: string
+    description: Error type
+  fbtrace_id:
+    type: string
+    description: Facebook trace ID for debugging
+required:
+  - code
+  - message
+  - type

@@ -1,0 +1,102 @@
+# /facebook_ads/components/schemas/Targeting.yaml
+type: object
+properties:
+  geo_locations:
+    type: object
+    properties:
+      countries:
+        type: array
+        items:
+          type: string
+        description: List of target countries
+      regions:
+        type: array
+        items:
+          type: object
+          properties:
+            key:
+              type: string
+        description: List of regions to target
+      cities:
+        type: array
+        items:
+          type: object
+          properties:
+            key:
+              type: string
+            radius:
+              type: string
+            distance_unit:
+              type: string
+        description: List of cities to target with radius
+    description: Geographic locations to target
+  facebook_positions:
+    type: array
+    items:
+      type: string
+      enum:
+        - feed
+        - instant_article
+        - right_hand_column
+        - marketplace
+        - video_feeds
+        - stories
+        - search
+        - instream_video
+        - suggested_video
+        - overlay
+    description: List of Facebook positions
+  publisher_platforms:
+    type: array
+    items:
+      type: string
+      enum:
+        - facebook
+        - instagram
+        - audience_network
+        - messenger
+    description: List of publisher platforms
+  device_platforms:
+    type: array
+    items:
+      type: string
+      enum:
+        - mobile
+        - desktop
+    description: Device platforms to target
+  age_min:
+    type: integer
+    description: Minimum age of targeted audience
+  age_max:
+    type: integer
+    description: Maximum age of targeted audience
+  genders:
+    type: array
+    items:
+      type: integer
+      enum:
+        - 1  # Male
+        - 2  # Female
+    description: Gender to target. 1 for male, 2 for female
+  interests:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    description: Interests to target
+  behaviors:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    description: Behaviors to target
+required:
+  - geo_locations

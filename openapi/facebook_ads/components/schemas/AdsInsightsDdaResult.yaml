@@ -1,0 +1,18 @@
+# /facebook_ads/components/schemas/AdsInsightsDdaResult.yaml
+type: object
+properties:
+  actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Actions attributed using data-driven attribution
+  spend:
+    type: string
+    description: Spend attributed using data-driven attribution
+  impressions:
+    type: string
+    description: Impressions attributed using data-driven attribution
+required:
+  - actions
+  - spend
+  - impressions

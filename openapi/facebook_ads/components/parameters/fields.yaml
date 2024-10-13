@@ -1,0 +1,38 @@
+# /facebook_ads/components/parameters/fields.yaml
+name: fields
+in: query
+description: |
+  Fields to be retrieved. Default behavior is to return impressions and spend.
+  Examples of fields include:
+    - account_currency
+    - account_id
+    - account_name
+    - actions
+    - action_values
+    - ad_id
+    - ad_name
+    - adset_id
+    - adset_name
+    - campaign_id
+    - campaign_name
+    - clicks
+    - cost_per_action_type
+    - cost_per_unique_click
+    - cpc
+    - cpm
+    - ctr
+    - date_start
+    - date_stop
+    - frequency
+    - impressions
+    - inline_link_clicks
+    - reach
+    - spend
+    - unique_clicks
+    - website_ctr
+  For a full list of available fields, refer to the [Facebook Ads Insights API documentation](https://developers.facebook.com/docs/marketing-api/insights/fields).
+required: false
+schema:
+  type: array
+  items:
+    type: string

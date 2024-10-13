@@ -1,0 +1,12 @@
+# /facebook_ads/components/parameters/sort.yaml
+name: sort
+in: query
+description: Field to sort the result, and direction of sorting
+required: false
+schema:
+  type: array
+  items:
+    type: string
+    description: |
+      Specify sorting direction by appending "_ascending" or "_descending" to the sort field.
+      Example: "reach_descending", "actions:link_click_ascending"

@@ -1,0 +1,27 @@
+# /facebook_ads/components/schemas/CampaignInsightsList.yaml
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: './CampaignInsights.yaml'
+  paging:
+    type: object
+    properties:
+      cursors:
+        type: object
+        properties:
+          before:
+            type: string
+            description: Cursor for the previous page
+          after:
+            type: string
+            description: Cursor for the next page
+  summary:
+    type: object
+    properties:
+      total_count:
+        type: integer
+        description: Total number of records
+required:
+  - data

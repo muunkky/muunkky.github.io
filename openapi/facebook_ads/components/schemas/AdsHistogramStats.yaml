@@ -1,0 +1,12 @@
+# /facebook_ads/components/schemas/AdsHistogramStats.yaml
+type: object
+properties:
+  bucket:
+    type: string
+    description: Time bucket for histogram.
+  value:
+    type: integer
+    description: Number of actions in the bucket.
+required:
+  - bucket
+  - value

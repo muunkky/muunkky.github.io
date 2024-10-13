@@ -1,0 +1,10 @@
+# /facebook_ads/components/parameters/effective_status.yaml
+name: effective_status
+in: query
+description: Filter ads by effective status
+required: false
+schema:
+  type: array
+  items:
+    type: string
+    enum: [ACTIVE, PAUSED, DELETED, ARCHIVED, CAMPAIGN_PAUSED, WITH_ISSUES]

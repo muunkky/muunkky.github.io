@@ -1,0 +1,38 @@
+# /facebook_ads/components/schemas/CampaignInsights.yaml
+type: object
+properties:
+  campaign_id:
+    type: string
+    description: Unique identifier for the campaign
+  campaign_name:
+    type: string
+    description: Name of the campaign
+  date_start:
+    type: string
+    format: date
+    description: The start date for your data
+  date_stop:
+    type: string
+    format: date
+    description: The end date for your data
+  impressions:
+    type: string
+    description: Number of impressions
+  spend:
+    type: string
+    description: Total amount spent
+  clicks:
+    type: string
+    description: Number of clicks
+  actions:
+    type: array
+    items:
+      $ref: './AdsActionStats.yaml'
+    description: Actions attributed to the campaign
+required:
+  - campaign_id
+  - campaign_name
+  - date_start
+  - date_stop
+  - impressions
+  - spend

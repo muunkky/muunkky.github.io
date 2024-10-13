@@ -1,0 +1,7 @@
+# /facebook_ads/components/parameters/adId.yaml
+name: adId
+in: path
+description: Unique identifier for the Ad
+required: true
+schema:
+  type: string

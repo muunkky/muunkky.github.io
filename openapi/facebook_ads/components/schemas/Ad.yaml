@@ -1,0 +1,62 @@
+# /facebook_ads/components/schemas/Ad.yaml
+type: object
+properties:
+  id:
+    type: string
+    description: Unique identifier for the Ad
+  account_id:
+    type: string
+    description: ID of the ad account that owns this Ad
+  adset_id:
+    type: string
+    description: ID of the ad set this Ad belongs to
+  campaign_id:
+    type: string
+    description: ID of the campaign this Ad belongs to
+  name:
+    type: string
+    description: Name of the Ad
+  status:
+    type: string
+    enum: [ACTIVE, PAUSED, DELETED, ARCHIVED]
+    description: Current status of the Ad
+  configured_status:
+    type: string
+    enum: [ACTIVE, PAUSED, DELETED, ARCHIVED]
+    description: Configured status of the Ad
+  effective_status:
+    type: string
+    enum: [ACTIVE, PAUSED, DELETED, ARCHIVED, CAMPAIGN_PAUSED, ADSET_PAUSED, WITH_ISSUES]
+    description: The effective status of the Ad
+  created_time:
+    type: string
+    format: date-time
+    description: Time when the Ad was created
+  updated_time:
+    type: string
+    format: date-time
+    description: Time when the Ad was last updated
+  creative:
+    $ref: './AdCreative.yaml'
+    description: Creative associated with the Ad
+  tracking_specs:
+    type: array
+    items:
+      type: object
+    description: Tracking specs for the Ad
+  ad_review_feedback:
+    type: object
+    description: Feedback from ad review process
+  insights:
+    $ref: './AdInsights.yaml'
+    description: Insights data for the Ad
+required:
+  - id
+  - account_id
+  - adset_id
+  - campaign_id
+  - name
+  - status
+  - configured_status
+  - created_time
+  - updated_time

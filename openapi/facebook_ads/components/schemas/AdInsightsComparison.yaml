@@ -1,0 +1,12 @@
+# /facebook_ads/components/schemas/AdsInsightsComparison.yaml
+type: object
+properties:
+  current:
+    $ref: './AdInsights.yaml'
+    description: Current time range insights.
+  comparison:
+    $ref: './AdInsights.yaml'
+    description: Comparison time range insights.
+required:
+  - current
+  - comparison

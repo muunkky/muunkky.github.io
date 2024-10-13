@@ -1,0 +1,9 @@
+# /facebook_ads/components/securitySchemes/OAuth2.yaml
+type: oauth2
+flows:
+  authorizationCode:
+    authorizationUrl: https://www.facebook.com/dialog/oauth
+    tokenUrl: https://graph.facebook.com/oauth/access_token
+    scopes:
+      ads_read: Grants read access to ads
+      ads_management: Grants management access to ads

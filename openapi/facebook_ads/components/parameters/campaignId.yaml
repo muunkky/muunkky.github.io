@@ -1,0 +1,7 @@
+# /facebook_ads/components/parameters/campaignId.yaml
+name: campaignId
+in: path
+description: Unique identifier for the campaign
+required: true
+schema:
+  type: string

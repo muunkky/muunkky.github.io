@@ -1,0 +1,83 @@
+# /facebook_ads/components/schemas/Campaign.yaml
+type: object
+properties:
+  id:
+    type: string
+    description: Unique identifier for the campaign
+  account_id:
+    type: string
+    description: ID of the ad account that owns this campaign
+  name:
+    type: string
+    description: Campaign's name
+  objective:
+    type: string
+    enum:
+      - APP_INSTALLS
+      - BRAND_AWARENESS
+      - CONVERSIONS
+      - EVENT_RESPONSES
+      - LEAD_GENERATION
+      - LINK_CLICKS
+      - MESSAGES
+      - PAGE_LIKES
+      - POST_ENGAGEMENT
+      - PRODUCT_CATALOG_SALES
+      - REACH
+      - STORE_VISITS
+      - TRAFFIC
+      - VIDEO_VIEWS
+    description: Campaign's objective
+  status:
+    type: string
+    enum:
+      - ACTIVE
+      - PAUSED
+      - DELETED
+      - ARCHIVED
+    description: Current status of the campaign
+  configured_status:
+    type: string
+    enum:
+      - ACTIVE
+      - PAUSED
+      - DELETED
+      - ARCHIVED
+    description: Configured status of the campaign
+  created_time:
+    type: string
+    format: date-time
+    description: Time when the campaign was created
+  updated_time:
+    type: string
+    format: date-time
+    description: Time when the campaign was last updated
+  budget_remaining:
+    type: string
+    description: Remaining budget
+  lifetime_budget:
+    type: string
+    description: The lifetime budget of the campaign
+  daily_budget:
+    type: string
+    description: The daily budget of the campaign
+  is_skadnetwork_attribution:
+    type: boolean
+    description: Indicates if the campaign includes SKAdNetwork, iOS 14+
+  special_ad_categories:
+    type: array
+    items:
+      type: string
+      enum:
+        - NONE
+        - HOUSING
+        - EMPLOYMENT
+        - CREDIT
+        - ISSUES_ELECTIONS_POLITICS
+    description: Special ad categories applicable to the campaign
+required:
+  - id
+  - account_id
+  - name
+  - objective
+  - status
