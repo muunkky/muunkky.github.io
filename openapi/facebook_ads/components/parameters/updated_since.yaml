@@ -1,0 +1,8 @@
+name: updated_since
+in: query
+description: Retrieve results that have been updated since this timestamp. The timestamp should be in ISO 8601 format (e.g., 2024-01-01T12:00:00Z).
+required: false
+schema:
+  type: string
+  format: date-time
+  example: 2024-01-01T12:00:00Z
