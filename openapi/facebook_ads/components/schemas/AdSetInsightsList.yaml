@@ -1,0 +1,55 @@
+# /facebook_ads/components/schemas/AdSetInsightsList.yaml
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: './AdSetInsights.yaml'
+    description: A list of ad set insights data.
+  paging:
+    type: object
+    properties:
+      cursors:
+        type: object
+        properties:
+          before:
+            type: string
+            description: Cursor for the previous page.
+          after:
+            type: string
+            description: Cursor for the next page.
+      next:
+        type: string
+        format: uri
+        description: URL to the next page of results.
+      previous:
+        type: string
+        format: uri
+        description: URL to the previous page of results.
+    description: Paging information for navigating through results.
+  summary:
+    type: object
+    properties:
+      account_currency:
+        type: string
+        description: The currency used by the ad account.
+      account_id:
+        type: string
+        description: The ID of the ad account.
+      account_name:
+        type: string
+        description: The name of the ad account.
+      action_values:
+        type: array
+        items:
+          $ref: './AdsActionStats.yaml'
+        description: The total value of all conversions attributed to your ads.
+      actions:
+        type: array
+        items:
+          $ref: './AdsActionStats.yaml'
+        description: The total number of actions attributed to your ads.
+    description: A summary of aggregated information for the ad set insights.
+required:
+  - data
+  - paging
