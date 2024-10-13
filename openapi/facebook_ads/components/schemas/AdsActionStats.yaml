@@ -1,0 +1,41 @@
+type: object
+properties:
+  action_type:
+    type: string
+    description: The type of action taken by the user. This can include clicks, likes, shares, purchases, etc.
+    example: link_click
+  value:
+    type: string
+    description: The number of actions taken or the value attributed to those actions (e.g., revenue from purchases). Facebook tends to return this as a string even if it's numeric.
+    example: "10"
+  action_target_id:
+    type: string
+    description: The ID of the target object associated with the action, such as the post or product that was clicked or purchased.
+    example: "123456789"
+  action_device:
+    type: string
+    description: The device used for the action (e.g., mobile, desktop).
+    example: mobile
+  conversion_value:
+    type: string
+    description: The value of the conversion that happened after the action, such as the revenue from a purchase. This field is usually tied to purchase actions.
+    example: "99.99"
+  action_video_sound:
+    type: string
+    description: Indicates whether sound was on or off during video playback.
+    example: sound_on
+  action_video_type:
+    type: string
+    description: The type of video interaction, such as whether it was an autoplay or click-to-play.
+    example: autoplay
+  action_carousel_card_id:
+    type: string
+    description: The ID of the carousel card that triggered the action, if applicable.
+    example: "987654321"
+  action_carousel_card_name:
+    type: string
+    description: The name of the carousel card that triggered the action, if applicable.
+    example: "Summer Sale"
+required:
+  - action_type
+  - value
