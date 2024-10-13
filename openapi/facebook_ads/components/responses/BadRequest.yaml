@@ -3,4 +3,4 @@ description: Invalid request parameters
 content:
   application/json:
     schema:
-      $ref: '../../shared/components/schemas/Error.yaml'
+      $ref: '../../../shared/components/schemas/Error.yaml'

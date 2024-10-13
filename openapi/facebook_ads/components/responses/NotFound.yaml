@@ -3,4 +3,4 @@ description: Resource not found
 content:
   application/json:
     schema:
-      $ref: '../../shared/components/schemas/Error.yaml'
+      $ref: '../../../shared/components/schemas/Error.yaml'
