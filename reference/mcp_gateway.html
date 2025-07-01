@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Guide: On-Demand MCP Gateway</title>
+    <!-- Chosen Palette: Calm Harmony - A palette using warm neutrals (Tailwind's Stone) with a muted Teal accent for interactive elements, creating a focused and professional yet comfortable learning environment. -->
+    <!-- Application Structure Plan: A single-page application with a sticky top navigation for the main parts of the guide (Setup, Microservices, Gateway, etc.). This structure turns the linear document into an easily explorable resource, allowing users to jump between sections without scrolling. The main content area uses styled blocks for code and commands to improve readability and usability over a plain document. This structure was chosen to enhance the learning and reference experience for a developer by providing both guided linear progression and quick random access. -->
+    <!-- Visualization & Content Choices: The report is a text/code-based tutorial, so no data charts are needed. The primary "visualizations" are structured code and command blocks. Goal: Present code/commands clearly. Method: Styled `<pre>` blocks with a contrasting dark background, file path headers, and subtle syntax-like text coloring. Interaction: A 'Copy to Clipboard' button for each block to improve developer workflow. Goal: Guide navigation. Method: A sticky navigation bar that highlights the user's current section. Interaction: Smooth scrolling on click and active section highlighting powered by an IntersectionObserver for efficiency. This approach focuses on developer convenience and learning efficiency. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #334155; /* slate-700 */
+        }
+        h1, h2, h3 {
+            font-weight: 600;
+            color: #1e293b; /* slate-800 */
+        }
+        code, pre {
+            font-family: 'Fira Code', monospace;
+        }
+        .nav-link.active {
+            background-color: #0f766e; /* teal-700 */
+            color: white;
+        }
+        .nav-link:not(.active):hover {
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .code-block-header {
+            background-color: #374151; /* gray-700 */
+            border-bottom: 1px solid #4b5563; /* gray-600 */
+        }
+        .copy-btn:hover {
+            background-color: #4b5563; /* gray-600 */
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sticky Navigation Sidebar -->
+        <nav id="navbar" class="w-full md:w-64 bg-white/80 backdrop-blur-sm md:border-r border-b md:border-b-0 border-slate-200 sticky top-0 md:h-screen z-20">
+            <div class="p-4">
+                <h3 class="text-lg font-bold text-slate-900">Guide Sections</h3>
+            </div>
+            <ul class="flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible">
+                <li><a href="#introduction" class="nav-link block text-sm font-medium text-slate-700 px-4 py-3 transition-colors duration-200">Introduction</a></li>
+                <li><a href="#part1" class="nav-link block text-sm font-medium text-slate-700 px-4 py-3 transition-colors duration-200">Part 1: Workspace Setup</a></li>
+                <li><a href="#part2" class="nav-link block text-sm font-medium text-slate-700 px-4 py-3 transition-colors duration-200">Part 2: Microservices</a></li>
+                <li><a href="#part3" class="nav-link block text-sm font-medium text-slate-700 px-4 py-3 transition-colors duration-200">Part 3: The Gateway</a></li>
+                <li><a href="#part4" class="nav-link block text-sm font-medium text-slate-700 px-4 py-3 transition-colors duration-200">Part 4: Testing</a></li>
+                <li><a href="#part5" class="nav-link block text-sm font-medium text-slate-700 px-4 py-3 transition-colors duration-200">Part 5: Integration</a></li>
+                <li><a href="#conclusion" class="nav-link block text-sm font-medium text-slate-700 px-4 py-3 transition-colors duration-200">Conclusion</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 md:p-10 lg:p-12">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <section id="introduction" class="scroll-mt-24">
+                    <h1 class="text-4xl md:text-5xl font-bold text-teal-800">Developer Guide: Building an On-Demand MCP API Gateway</h1>
+                    <p class="mt-4 text-lg text-slate-600">In modern AI-assisted development, you often work with multiple tools and services. Running all of these simultaneously consumes memory and clutters your workspace. This guide will walk you through creating a single, intelligent entry point—an **On-Demand API Gateway**.</p>
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                        <div class="bg-teal-50 border border-teal-200 p-4 rounded-lg">
+                            <h3 class="font-semibold text-teal-900">Single Endpoint</h3>
+                            <p class="text-sm text-teal-700 mt-1">Provide a consistent endpoint for all your local development services.</p>
+                        </div>
+                        <div class="bg-teal-50 border border-teal-200 p-4 rounded-lg">
+                            <h3 class="font-semibold text-teal-900">Launch On-Demand</h3>
+                            <p class="text-sm text-teal-700 mt-1">Automatically launch a service only when the first request for it comes in.</p>
+                        </div>
+                        <div class="bg-teal-50 border border-teal-200 p-4 rounded-lg">
+                            <h3 class="font-semibold text-teal-900">Graceful Shutdown</h3>
+                            <p class="text-sm text-teal-700 mt-1">Shut down all started services when you're finished, preventing zombie processes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="part1" class="scroll-mt-24 space-y-6">
+                    <h2 class="text-3xl font-bold border-b border-slate-200 pb-2">Part 1: Workspace Setup</h2>
+                    <p>This section guides you through preparing your project folder and Python environment. A clean setup is the first step to a successful project.</p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">1. Create Project Directory</h3>
+                        <p class="mb-2">This command creates a new folder for the project and navigates into it.</p>
+                        <div class="code-container">
+                            <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">Terminal Command</span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>mkdir mcp-gateway
+cd mcp-gateway</code></pre>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold mb-2">2. Create a Virtual Environment</h3>
+                        <p class="mb-2">A virtual environment isolates your project's dependencies. First, create it, then activate it using the command for your operating system.</p>
+                        <div class="code-container">
+                            <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">Terminal Command</span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code><span class="text-gray-400"># Create the environment</span>
+python -m venv venv
+
+<span class="text-gray-400"># On macOS/Linux</span>
+source venv/bin/activate
+
+<span class="text-gray-400"># On Windows</span>
+.\\venv\\Scripts\\activate</code></pre>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold mb-2">3. Install Necessary Packages</h3>
+                        <p class="mb-2">Install Flask for the web server and Requests for forwarding HTTP requests.</p>
+                        <div class="code-container">
+                             <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">Terminal Command</span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>pip install Flask requests</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="part2" class="scroll-mt-24 space-y-6">
+                    <h2 class="text-3xl font-bold border-b border-slate-200 pb-2">Part 2: Creating the "Microservices"</h2>
+                    <p>These are the individual tools our gateway will manage. Here we'll create two simple mock services. Remember not to run these scripts directly; the gateway will do it for us.</p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">1. The Documentation Service</h3>
+                        <p class="mb-2">This service simulates looking up documentation.</p>
+                         <div class="code-container">
+                             <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">File: <code class="font-normal">services/doc_service.py</code></span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>from flask import Flask, jsonify
+import os
+
+app = Flask(__name__)
+
+PORT = 5001
+
+@app.route('/<path:path>')
+def doc_handler(path):
+    pid = os.getpid()
+    return jsonify({
+        "service_name": "Documentation Service",
+        "message": f"Documentation for '{path}'",
+        "process_id": pid,
+        "port": PORT
+    })
+
+if __name__ == '__main__':
+    print(f"--- Starting Documentation Service on port {PORT} ---")
+    app.run(port=PORT)</code></pre>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">2. The Code Analysis Service</h3>
+                        <p class="mb-2">This service simulates a code analysis tool.</p>
+                        <div class="code-container">
+                            <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">File: <code class="font-normal">services/code_service.py</code></span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>from flask import Flask, jsonify
+import os
+
+app = Flask(__name__)
+
+PORT = 5002
+
+@app.route('/<path:path>')
+def code_handler(path):
+    pid = os.getpid()
+    return jsonify({
+        "service_name": "Code Analysis Service",
+        "message": f"Analysis complete for '{path}'",
+        "lines_of_code": len(path) * 10,
+        "process_id": pid,
+        "port": PORT
+    })
+
+if __name__ == '__main__':
+    print(f"--- Starting Code Analysis Service on port {PORT} ---")
+    app.run(port=PORT)</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="part3" class="scroll-mt-24 space-y-6">
+                    <h2 class="text-3xl font-bold border-b border-slate-200 pb-2">Part 3: Building the Intelligent Gateway</h2>
+                     <p>This is the heart of our project. It listens for requests, decides which service is needed, launches it if it's dormant, and then forwards the request.</p>
+                     <div class="code-container">
+                        <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                            <span class="text-sm text-gray-300 font-sans">File: <code class="font-normal">launcher_gateway.py</code></span>
+                            <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                        </div>
+                        <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>from flask import Flask, request, jsonify
+import requests
+import subprocess
+import socket
+import time
+import atexit
+import sys
+
+app = Flask(__name__)
+
+SERVICE_MAP = {
+    'docs': {
+        'script': 'services/doc_service.py',
+        'port': 5001,
+        'process': None
+    },
+    'code': {
+        'script': 'services/code_service.py',
+        'port': 5002,
+        'process': None
+    }
+}
+
+def is_port_in_use(port: int) -> bool:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        return s.connect_ex(('127.0.0.1', port)) == 0
+
+def start_service(service_name: str) -> bool:
+    if service_name not in SERVICE_MAP: return False
+    config = SERVICE_MAP[service_name]
+    port = config['port']
+    if is_port_in_use(port): return True
+    print(f"Attempting to start service '{service_name}' on port {port}...")
+    
+    if 'command' in config: command = config['command']
+    else: command = [sys.executable, config['script']]
+
+    creationflags = subprocess.CREATE_NO_WINDOW if sys.platform == 'win32' else 0
+    process = subprocess.Popen(command, creationflags=creationflags)
+    config['process'] = process
+    
+    timeout = 15
+    start_time = time.time()
+    while not is_port_in_use(port):
+        if time.time() - start_time > timeout:
+            print(f"Error: Service '{service_name}' failed to start.")
+            process.terminate()
+            return False
+        time.sleep(0.2)
+    
+    print(f"Service '{service_name}' started successfully (PID: {process.pid}).")
+    return True
+
+@app.route('/api/&lt;service_name&gt;/&lt;path:path&gt;', methods=['GET', 'POST', 'PUT', 'DELETE'])
+def gateway(service_name, path):
+    if service_name not in SERVICE_MAP:
+        return jsonify({'error': f"Service '{service_name}' not configured"}), 404
+    config = SERVICE_MAP[service_name]
+    
+    if not is_port_in_use(config['port']):
+        if not start_service(service_name):
+            return jsonify({'error': f"Could not start service"}), 503
+
+    service_url = f"http://127.0.0.1:{config['port']}/{path}"
+    try:
+        resp = requests.request(
+            method=request.method,
+            url=service_url,
+            headers={key: value for (key, value) in request.headers if key.lower() != 'host'},
+            data=request.get_data(),
+            cookies=request.cookies,
+            allow_redirects=False,
+            stream=True
+        )
+        excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
+        headers = [(n, v) for (n, v) in resp.raw.headers.items() if n.lower() not in excluded_headers]
+        return (resp.content, resp.status_code, headers)
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': f"Error connecting to service: {e}"}), 502
+
+def cleanup_child_processes():
+    print("\nGateway shutting down. Terminating child processes...")
+    for service_name, config in SERVICE_MAP.items():
+        if config.get('process'):
+            print(f"Stopping '{service_name}' (PID: {config['process'].pid})...")
+            config['process'].terminate()
+            config['process'].wait()
+    print("Cleanup complete. Goodbye.")
+
+atexit.register(cleanup_child_processes)
+
+if __name__ == '__main__':
+    print("Starting On-Demand MCP API Gateway on http://127.0.0.1:5000")
+    app.run(port=5000, debug=False)
+</code></pre>
+                    </div>
+                </section>
+                
+                <section id="part4" class="scroll-mt-24 space-y-6">
+                    <h2 class="text-3xl font-bold border-b border-slate-200 pb-2">Part 4: Running & Testing</h2>
+                    <p>Now, let's see it all work together. You'll run only the gateway script, which will then launch the other services as needed.</p>
+                     <div>
+                        <h3 class="text-xl font-semibold mb-2">1. Run the Gateway</h3>
+                        <p class="mb-2">From your terminal (with the virtual environment active), run this command.</p>
+                        <div class="code-container">
+                            <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">Terminal Command</span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>python launcher_gateway.py</code></pre>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold mb-2">2. Test the First Service</h3>
+                        <p class="mb-2">Open a new terminal window. This `curl` command will trigger the gateway to launch the `docs` service.</p>
+                        <div class="code-container">
+                            <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">Terminal Command</span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>curl http://127.0.0.1:5000/api/docs/flask/routing</code></pre>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold mb-2">3. Test the Second Service</h3>
+                        <p class="mb-2">Now, request the `code` service. The gateway will launch it on demand without affecting the already-running `docs` service.</p>
+                         <div class="code-container">
+                            <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">Terminal Command</span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>curl http://127.0.0.1:5000/api/code/my_function</code></pre>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">4. Stop the Gateway</h3>
+                        <p class="mb-2">Go back to the terminal running the gateway and press `Ctrl+C`. The `atexit` cleanup function will automatically stop all the services that were launched.</p>
+                    </div>
+                </section>
+                
+                <section id="part5" class="scroll-mt-24 space-y-6">
+                    <h2 class="text-3xl font-bold border-b border-slate-200 pb-2">Part 5: Integrating a Real MCP Server (Context7)</h2>
+                    <p>This section demonstrates the gateway's power by integrating a real-world, non-Python service: Context7, a Node.js application.</p>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">1. Prerequisite: Install Node.js</h3>
+                        <p class="mb-2">Our gateway can launch a Node.js app, but it can't run JavaScript itself. You need Node.js installed on your system. If `node --version` doesn't work in your terminal, install it from the official website.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">2. Update the Gateway Configuration</h3>
+                        <p class="mb-2">Modify `launcher_gateway.py` to include the `context7` service. We use a `command` key to specify how to launch this non-Python service.</p>
+                        <div class="code-container">
+                            <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">File: <code class="font-normal">launcher_gateway.py</code> (SERVICE_MAP section)</span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>SERVICE_MAP = {
+    'docs': {
+        'script': 'services/doc_service.py',
+        'port': 5001,
+        'process': None
+    },
+    'code': {
+        'script': 'services/code_service.py',
+        'port': 5002,
+        'process': None
+    },
+    # --- ADD THIS NEW ENTRY ---
+    'context7': {
+        'command': ['npx', '-y', '@upstash/context7-mcp'],
+        'port': 3000, # The default port for context7
+        'process': None
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold mb-2">3. Test the Integration</h3>
+                        <p class="mb-2">After restarting the gateway, run this command. The first time, `npx` will download `context7`, which may take a moment. The gateway will wait patiently before forwarding the request.</p>
+                         <div class="code-container">
+                            <div class="code-block-header px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-sm text-gray-300 font-sans">Terminal Command</span>
+                                <button class="copy-btn text-xs text-gray-300 font-sans border border-gray-500 rounded-md px-2 py-1 transition-colors">Copy</button>
+                            </div>
+                            <pre class="bg-gray-800 text-white p-4 rounded-b-lg overflow-x-auto"><code>curl http://127.0.0.1:5000/api/context7/health</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="conclusion" class="scroll-mt-24 space-y-6">
+                     <h2 class="text-3xl font-bold border-b border-slate-200 pb-2">Conclusion: Your Personal Development Hub</h2>
+                    <p>You have built more than just a script; you've created a robust, personal development hub. This on-demand gateway acts as a central controller for all your local tools, saving system resources and simplifying your workflow.</p>
+                    <ul class="list-disc list-inside space-y-2 mt-4 pl-4 text-slate-600">
+                        <li><span class="font-semibold text-slate-700">A Single Endpoint:</span> All your tools are now accessible via <code class="bg-slate-200 text-sm p-1 rounded">http://localhost:5000/api/...</code></li>
+                        <li><span class="font-semibold text-slate-700">Resource Efficiency:</span> Services only run when you need them.</li>
+                        <li><span class="font-semibold text-slate-700">Language Agnostic:</span> You can launch Python, Node.js, Go, or any other command-line application.</li>
+                        <li><span class="font-semibold text-slate-700">Automatic Cleanup:</span> No more zombie processes left running after you're done.</li>
+                    </ul>
+                    <p class="mt-4">From here, you can expand the gateway to suit your specific needs. Add more of your favorite MCP servers, integrate custom scripts, or even add a simple web interface to see which services are currently active. You have the foundation for a truly powerful local development environment.</p>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Copy to Clipboard functionality ---
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            copyButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const codeBlock = btn.closest('.code-container').querySelector('pre');
+                    const textToCopy = codeBlock.textContent;
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Copied!';
+                        setTimeout(() => {
+                            btn.textContent = originalText;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+                });
+            });
+
+            // --- Active navigation link highlighting on scroll ---
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#navbar a');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-30% 0px -70% 0px' }); // Trigger when section is in the middle 40% of the viewport
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
